@@ -2,14 +2,16 @@ import flet as ft
 from flet_route import Params,Basket
 
 class SplashScreen:
-    def __init__(self, src_icon:str, name_app:str, version_app:str):
+    def __init__(self, page, src_icon:str, name_app:str, version_app:str):
         self.src_icon= src_icon
         self.name_app = name_app
         self.version_app = version_app
+        self.page = page
         pass
 
     def view(self, page:ft.Page, params:Params, basket:Basket):
-        return ft.View("/splash_screen",[
+
+        return    ft.View("/splash_screen",[
             ft.Stack([
                 ft.Container(
                     expand=True,

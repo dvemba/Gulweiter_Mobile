@@ -14,7 +14,7 @@ def main(page: ft.Page):
 
     page.route = "/splash_screen"
     app_routes = [
-        path("/splash_screen",True, SplashScreen("https://www.dropbox.com/scl/fi/cvb1o5ww79uonl6bhwvs4/logo.png?rlkey=qjm79z9vob8pgdgnifslozb9a&st=g2rpyr5t&dl=1","Gulweiter","0.1.0").view),
+        path("/splash_screen",True, SplashScreen(page, "https://www.dropbox.com/scl/fi/cvb1o5ww79uonl6bhwvs4/logo.png?rlkey=qjm79z9vob8pgdgnifslozb9a&st=g2rpyr5t&dl=1", "Gulweiter", "0.1.0").view),
     ]
 
     Routing(page,app_routes,not_found_view=ViewNotFound)
