@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Flet
-storage/
+storage/src/services/serviceAccountKey.json
