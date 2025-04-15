@@ -12,7 +12,7 @@ def main(page: ft.Page):
     page.padding = 0
     page.fonts = {
         "Saira_fonts": "fonts/Saira-Medium.ttf"
-    }
+    } 
     theme = ft.Theme()
     theme.page_transitions = ft.PageTransitionsTheme(android=ft.PageTransitionTheme.NONE, ios=ft.PageTransitionTheme.NONE)
     page.theme = theme
