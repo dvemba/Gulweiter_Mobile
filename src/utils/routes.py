@@ -1,4 +1,4 @@
 routes = {
-    "splash_screen" : "/splash_screen",
+    "login" : "/login",
     "home": "/home",
 }
