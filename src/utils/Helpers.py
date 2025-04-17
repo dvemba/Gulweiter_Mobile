@@ -15,3 +15,13 @@ class Helpers:
         )
         page.overlay.append(snack_bar) 
         page.update()
+    
+    def loading(self):
+        return ft.Container(
+                    content=ft.Column([
+                        ft.ProgressRing(stroke_width=3,width=32, height=32, color=Helpers().color_primary),
+                        ft.Text("Carregando...")
+                    ], expand=True,alignment=ft.MainAxisAlignment.CENTER, horizontal_alignment=ft.CrossAxisAlignment.CENTER),
+                    expand=True,
+                    alignment=ft.alignment.center
+                )

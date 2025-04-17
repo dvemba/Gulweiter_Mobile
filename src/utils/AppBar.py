@@ -7,7 +7,7 @@ class AppBar:
         self.page = page
         self.index_bar = index_bar
         self.page.drawer = ft.NavigationDrawer([
-            ft.NavigationDrawerDestination("Mesas", icon=ft.Icon(ft.Icons.TABLE_BAR),),
+            ft.NavigationDrawerDestination("Mesas", icon=ft.Icon(ft.Icons.TABLE_BAR),bgcolor='White'),
             ft.NavigationDrawerDestination("Reservar Mesas", icon = ft.Icon(ft.Icons.ACCESS_TIME_ROUNDED)),
             ft.NavigationDrawerDestination("Configuracao", icon=ft.Icon(ft.Icons.SETTINGS_ROUNDED)),
             ft.Divider(thickness=2),
