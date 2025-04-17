@@ -19,9 +19,9 @@ class FirebaseAuth:
     def sign_in(self, email, password):
         try:
             user = self.auth.sign_in_with_email_and_password(email, password)
-            print(f"Login feito com sucesso: {user['email']}")
-            print(user)
-            return True
+            # print(f"Login feito com sucesso: {user['email']}")
+            # print(user)
+            return [True, user]
         except Exception as e:
             print(f"Erro inesperado: {e}")
             return False

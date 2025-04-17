@@ -2,20 +2,22 @@ import flet as ft
 from flet_route import Params, Basket
 from utils.Helpers import Helpers
 from services.FirebaseAuth import FirebaseAuth
+import time
 
 class LoginView:
     def __init__(self, page):
+        self.count = 0
         self.page = page
         self.FirebaseAuth = FirebaseAuth()
         self.btn_ref = ft.Ref[ft.FilledButton]()
         self.input_email = ft.TextField(
                                 label="E-MAIL", 
-                                # border="underline", 
+                                border="underline", 
                                 on_change=self.check_input,
         )
         self.input_password = ft.TextField(
                                     label="PASSWORD", 
-                                    # border="underline", 
+                                    border="underline", 
                                     password=True, 
                                     can_reveal_password=True,
                                     on_change=self.check_input
@@ -73,11 +75,15 @@ class LoginView:
         
     def check_input(self, e):
         if (self.input_email.value != "" and self.input_password.value != ""):
-            if (self.btn_ref.current):
-                self.btn_ref.current.opacity  = 1.0
-                self.btn_ref.current.disabled = False
-                self.btn_ref.current.update()
+            
+            if self.count == 0:
+                self.count = 1
+                if (self.btn_ref.current):
+                    self.btn_ref.current.opacity  = 1.0
+                    self.btn_ref.current.disabled = False
+                    self.btn_ref.current.update()
         else:
+            self.count = 0
             if (self.btn_ref.current):
                 self.btn_ref.current.opacity  = 0.2
                 self.btn_ref.current.disabled = True
@@ -88,12 +94,18 @@ class LoginView:
         self.btn_ref.current.content = ft.ProgressRing(stroke_width=3, width=20, height=20, color='White')
         self.btn_ref.current.disabled = True
         self.btn_ref.current.update()
+        
         user = self.FirebaseAuth.sign_in(self.input_email.value, self.input_password.value)
+        self.page.client_storage.set("token-Gulweiter", {"Token" : user[1]['idToken'], "UserId" : user[1]['localId']})
+        
         self.btn_ref.current.content = ft.Text("ENTRAR", color="White")
         self.btn_ref.current.disabled = False
         self.btn_ref.current.update()
-        if user:
+        if user[0]:
+            print(user[1])
             Helpers().snackbar(self.page, "Green","Login feito com sucesso!")
+            time.sleep(2)
+            self.page.go('/tables')
         else:
             Helpers().snackbar(self.page, "Red","Erro ao fazer o login.")
         pass
