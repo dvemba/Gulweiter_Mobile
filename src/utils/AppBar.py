@@ -22,7 +22,9 @@ class AppBar:
             leading=ft.IconButton(ft.Icons.MENU_ROUNDED, icon_color="Black", icon_size=32, on_click=lambda e:self.navigation_drawer(e)),
             title=ft.Text(self.title, color='Black'),
             bgcolor="White",
-            
+            actions=[
+                ft.IconButton(icon=ft.Icons.QR_CODE_2_OUTLINED, icon_color=Helpers().color_primary, icon_size=32)
+            ]            
         )
         
     def navigation_drawer(self, e):

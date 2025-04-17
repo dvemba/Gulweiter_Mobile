@@ -25,3 +25,4 @@ class FirebaseAuth:
         except Exception as e:
             print(f"Erro inesperado: {e}")
             return False
+        
